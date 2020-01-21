@@ -1,0 +1,67 @@
+<div class="dis_flex">
+  <h1 mat-dialog-title class="dialogTitle w95">Permission Groups</h1>
+  <mat-icon class="mt15 cur_point" (click)="onCloseMain()">clear</mat-icon>
+</div>
+<div mat-dialog-content class="w100 fl dialog">
+  <div class='w100 fl radioDiv'>
+      <mat-radio-group
+      class="fr w100"
+      aria-label="Select an option"
+      [(ngModel)]="iTypeRadio"
+      (change)='radioChange()'
+    >
+    <mat-radio-button class='w50 fl tc' value="new">NEW</mat-radio-button>
+    <mat-radio-button class='w50 fl tc' value="existing">EXISTING</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class='newCreate' *ngIf='iTypeRadio == "new"'>
+      <mat-form-field class="example-full-width w100">
+          <input
+            matInput
+            placeholder="Enter Group Name"
+            [formControl]='groupName'
+            required
+          />
+        </mat-form-field>
+  </div>
+  <div class='existingUpdate' *ngIf='iTypeRadio == "existing"'>
+    <div class='w100 fl'>
+      <mat-form-field class='w100'>
+          <mat-select 
+            placeholder="Permission Group" 
+            [value]='selectedGroupId'
+            (selectionChange)='changeGroup($event)'>
+            <mat-option 
+              *ngFor='let item of permissionGroups' 
+              [value]='item.id'>
+              {{item.group}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class='w100 fl'>
+          <mat-selection-list #routes [formControl]="selectRoute">
+            <mat-list-option class='w50 fl chkBox' *ngFor='let item of allRoutes' [value]='item.id'>{{item.pagePath}}</mat-list-option>
+          </mat-selection-list>
+      </div>
+  </div>
+</div>
+
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>
+<div mat-dialog-actions>
+  <button
+    class="fr selectBtn"
+    mat-button
+    style="background-color:#2BB673;
+    font-family: spectralregular; color:#fff;"
+    (click)="onSavePermission()"
+  >
+    Save
+  </button>
+</div>

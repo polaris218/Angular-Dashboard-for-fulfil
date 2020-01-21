@@ -1,0 +1,380 @@
+<div class="p24 fl w100">
+  <div class="example-container">
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="productId"
+            [(ngModel)]="fillProductId"
+            readonly
+            placeholder="Product Id"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="descriptor"
+            [(ngModel)]="fillDescriptor"
+            placeholder="Descriptor"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="upc"
+            [(ngModel)]="fillUpc"
+            placeholder="Upc"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="department"
+            [(ngModel)]="fillDepartment"
+            placeholder="Department"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="aisle"
+            [(ngModel)]="fillAisle"
+            placeholder="Aisle"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="height"
+            [(ngModel)]="fillHeight"
+            placeholder="Height"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="length"
+            [(ngModel)]="fillLength"
+            placeholder="Length"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="lengthSecondary"
+            [(ngModel)]="fillLengthSecondary"
+            placeholder="Length Secondary"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="width"
+            [(ngModel)]="fillWidth"
+            placeholder="Width"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="widthSecondary"
+            [(ngModel)]="fillWidthSecondary"
+            placeholder="Width Secondary"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="diameter"
+            [(ngModel)]="fillDiameter"
+            placeholder="Diameter"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="diameterSecondary"
+            [(ngModel)]="fillDiameterSecondary"
+            placeholder="Diameter Secondary"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="diameterNarrow"
+            [(ngModel)]="fillDiameterNarrow"
+            placeholder="Diameter Narrow"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="mass"
+            [(ngModel)]="fillMass"
+            placeholder="Mass"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="volume"
+            [(ngModel)]="fillVolume"
+            placeholder="Volume"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="boundingBoxVolume"
+            [(ngModel)]="fillBoundingBoxVolume"
+            placeholder="Bounding Box Volume"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="density"
+            [(ngModel)]="fillDensity"
+            placeholder="Density"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="cog"
+            [(ngModel)]="fillCog"
+            placeholder="Cog"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="shape"
+            [(ngModel)]="fillShape"
+            placeholder="Shape"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="material"
+            [(ngModel)]="fillMaterial"
+            placeholder="Material"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="packageType"
+            [(ngModel)]="fillPackageType"
+            placeholder="Package Type"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="packagingMods"
+            [(ngModel)]="fillPackagingMods"
+            placeholder="Packaging Mods"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="transparency"
+            [(ngModel)]="fillTransparency"
+            placeholder="Transparency"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="damageable"
+            [(ngModel)]="fillDamageable"
+            placeholder="Damageable"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="damaging"
+            [(ngModel)]="fillDamaging"
+            placeholder="Damaging"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="hasStem"
+            [(ngModel)]="fillHasStem"
+            placeholder="Has Stem"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="isSharp"
+            [(ngModel)]="fillIsSharp"
+            placeholder="Is Sharp"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="storageTemp"
+            [(ngModel)]="fillStorageTemp"
+            placeholder="Storage Temp"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="storageHumidity"
+            [(ngModel)]="fillStorageHumidity"
+            placeholder="Storage Humidity"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="ethyleneSensitivity"
+            [(ngModel)]="fillEthyleneSensitivity"
+            placeholder="Ethylene Sensitivity"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="co2Sensitivity"
+            [(ngModel)]="fillCo2Sensitivity"
+            placeholder="Co2 Sensitivity"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="maxInventory"
+            [(ngModel)]="fillMaxInventory"
+            placeholder="Max Inventory"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="storageConfig"
+            [(ngModel)]="fillStorageConfig"
+            placeholder="Storage Config"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="shelfLife"
+            [(ngModel)]="fillShelfLife"
+            placeholder="Shelf Life"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+  </div>
+</div>

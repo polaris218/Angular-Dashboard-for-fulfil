@@ -1,0 +1,14 @@
+div.image-decorator {
+	-moz-border-radius : 5px 5px 5px 5px;
+	-moz-box-shadow : 0 0 6px #c8c8c8;
+	-webkit-border-radius : 5px 5px 5px 5px;
+	-webkit-box-shadow : 0 0 6px #c8c8c8;
+	background-color : #ffffff;
+	border : 1px solid #c8c8c8;
+	border-radius : 5px 5px 5px 5px;
+	box-shadow : 0 0 6px #c8c8c8;
+	display : inline-block;
+	padding : 5px 5px 5px 5px;
+	position: relative;
+	margin-bottom: 10px;
+}

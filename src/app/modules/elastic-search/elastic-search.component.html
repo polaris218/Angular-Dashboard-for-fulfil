@@ -1,0 +1,74 @@
+<div class="p24 fl w100">
+  <div class="searchBar">
+    <form class="example-form">
+      <mat-form-field class="example-full-width searchBox">
+        <input
+          matInput
+          placeholder="Search"
+          (input)="search($event.target.value)"
+          value=""
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">No.</th>
+        <td mat-cell *matCellDef="let element" class="tc">
+          {{ element.position }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="productImage">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">
+          Product Image
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="element.productImage" class="prodImg" />
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">Product Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">Price</th>
+        <td mat-cell *matCellDef="let element" class="tc">
+          ${{ element.price }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            (click)="onDelete(element.action)"
+            mat-raised-button
+            class="matButtonCss primary1 fr"
+          >
+            Delete
+          </button>
+          <button
+            (click)="onEdit(element.action)"
+            mat-raised-button
+            class="matButtonCss primary1 fr mr10"
+          >
+            Edit
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[100, 150, 200]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

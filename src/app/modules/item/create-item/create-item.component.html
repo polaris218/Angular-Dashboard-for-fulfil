@@ -1,0 +1,205 @@
+<div class="p24 fl w100">
+  <div class="example-container">
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="itemName"
+            [(ngModel)]="fillItemName"
+            placeholder="Item Name"
+            required
+            autofocus
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="upc"
+            [(ngModel)]="fillUpc"
+            placeholder="Upc"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-select
+            [formControl]="variantId"
+            [(ngModel)]="fillVariantId"
+            placeholder="Variant"
+          >
+            <mat-option
+              *ngFor="let variant of variants[0]"
+              [value]="variant.id"
+            >
+              {{ variant.group_name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="itemPrice"
+            [(ngModel)]="fillItemPrice"
+            type="number"
+            placeholder="Price"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="sku"
+            [(ngModel)]="fillSku"
+            placeholder="Sku"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="salePrice"
+            [(ngModel)]="fillSalePrice"
+            type="number"
+            placeholder="Sale Price"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-select
+            [formControl]="categoryId"
+            [(ngModel)]="fillCategoryId"
+            placeholder="Category"
+          >
+            <mat-option
+              *ngFor="let category of categories[0]"
+              [value]="category.id"
+            >
+              {{ category.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="brand"
+            [(ngModel)]="fillBrand"
+            placeholder="Brand"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [(ngModel)]="fillItemImage" placeholder="Image" />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [(ngModel)]="fillThumbImage" placeholder="Thumb" />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-form-field class="textAreaSet">
+      <textarea
+        matInput
+        [formControl]="shortDescription"
+        [(ngModel)]="fillShortDescription"
+        placeholder="Short Description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field class="textAreaSet">
+      <textarea
+        matInput
+        [formControl]="longDescription"
+        [(ngModel)]="fillLongDescription"
+        placeholder="Long Description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="label"
+        [(ngModel)]="fillLabel"
+        placeholder="Label"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="altImage1"
+        [(ngModel)]="fillAltImage1"
+        placeholder="Alt Image 1"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="altImage2"
+        [(ngModel)]="fillAltImage2"
+        placeholder="Alt Image 2"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="altImage3"
+        [(ngModel)]="fillAltImage3"
+        placeholder="Alt Image 3"
+      />
+    </mat-form-field>
+    <mat-checkbox [formControl]="isMeat" [(ngModel)]="fillIsMeat"
+      >Is Meat?</mat-checkbox
+    >
+    <mat-checkbox [formControl]="isProduce" [(ngModel)]="fillIsProduce">
+      Is Produce?</mat-checkbox
+    >
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="nominalSize"
+        [(ngModel)]="fillNominalSize"
+        placeholder="Nominal Size"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select
+        [formControl]="unitType"
+        [(ngModel)]="fillUnitType"
+        placeholder="Unit Type"
+      >
+        <mat-option value="OZ">OZ</mat-option>
+        <mat-option value="COUNT">COUNT</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmit('save')">
+      Save
+    </button>
+    <button
+      mat-raised-button
+      class="addMetaBtn"
+      color="primary"
+      (click)="onSubmit('addMetaData')"
+    >
+      Add metadata
+    </button>
+  </div>
+</div>

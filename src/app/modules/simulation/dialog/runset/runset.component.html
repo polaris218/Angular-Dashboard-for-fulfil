@@ -1,0 +1,67 @@
+<div class="dis_flex">
+  <h1 mat-dialog-title class="dialogTitle w95">Select Runset</h1>
+  <mat-icon class="mt15 cur_point" (click)="onCloseMain()">clear</mat-icon>
+</div>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input
+      type="text"
+      placeholder="Runset ID"
+      aria-label="Runset"
+      matInput
+      [formControl]="runsetInput"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [matDatepicker]="dp3"
+      placeholder="Date"
+      disabled
+      [formControl]="dateInput"
+    />
+    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <div class="fr mt8">
+    <button mat-raised-button color="primary" (click)="onSearchRunset()">
+      SEARCH
+    </button>
+  </div>
+</div>
+<div class="w100 fl mt8Res">
+  <div class="dialogListTitle">RUNSET ID</div>
+  <div class="dialogListTitle">Date</div>
+</div>
+<div class="w100 fl">
+  <mat-selection-list #runsets [formControl]="selectRunset">
+    <mat-list-option *ngFor="let item of runsetLists" [value]="item.id">
+      <div class="fl w50 f12Res w58Res w100Res">{{ item.id }}</div>
+      <div class="fl w50 f12Res w42Res w100Res">
+        {{ item.DateStart | date: 'MM/dd/yyyy hh:mm a' }}
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+<div mat-dialog-actions>
+  <span class="limitmsg"> {{ limitMessage }}</span>
+  <button class="fr selectBtn" mat-button (click)="onSelectCallRunset()">
+    Select
+  </button>
+</div>
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>

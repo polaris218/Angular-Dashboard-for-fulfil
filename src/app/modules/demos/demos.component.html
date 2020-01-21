@@ -1,0 +1,131 @@
+<div class="p24 fl w100" *ngIf="tableView == 1">
+  <div class="searchBar">
+    <form class="example-form">
+      <button
+        mat-raised-button
+        color="primary"
+        class="mr10"
+        (click)="createCurated()"
+      >
+        Create Curated Order
+      </button>
+      <mat-form-field class="example-full-width searchBox">
+        <input
+          matInput
+          placeholder="Search"
+          (input)="applyFilter($event.target.value)"
+          value=""
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">No.</th>
+        <td mat-cell *matCellDef="let element" class="tc">
+          {{ element.position }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="items">
+        <th mat-header-cell *matHeaderCellDef class="fBold tc">Items</th>
+        <td mat-cell *matCellDef="let element">{{ element.items }}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="fBold tc"
+          style="width:160px;"
+        >
+          Action
+        </th>
+        <td mat-cell *matCellDef="let element" style="width:160px;">
+          <button
+            (click)="onDelete(element.action)"
+            mat-raised-button
+            class="matButtonCss primary1 fr"
+          >
+            Delete
+          </button>
+          <button
+            mat-raised-button
+            (click)="orderPlace(element.items)"
+            class="matButtonCss primary1 fr mr10"
+          >
+            Order
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [length]="curatedOrdersLength.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[100, 150, 200]"
+      (page)="getPaginatorData($event)"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>
+
+<div class="p24 fl w100" *ngIf="tableView == 0">
+  <div class="example-container">
+    <div class="formTitle">Create Curated Order</div>
+    <mat-form-field class="mt15">
+      <input matInput [formControl]="itemTitleCtrl" placeholder="Order Title" />
+    </mat-form-field>
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let itemProduct of itemProducts"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(itemProduct)"
+        >
+          {{ itemProduct.productName }}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="Items"
+          #productInput
+          [formControl]="itemCtrl"
+          [matChipInputFor]="chipList"
+          [matAutocomplete]="auto"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)"
+        />
+      </mat-chip-list>
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="selected($event)"
+      >
+        <mat-option
+          *ngFor="let itemProduct of filteredProducts | async"
+          [value]="itemProduct"
+        >
+          {{ itemProduct }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmitOrder()">
+      Save
+    </button>
+  </div>
+</div>

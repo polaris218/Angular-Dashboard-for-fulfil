@@ -1,0 +1,39 @@
+.pageHeader {
+    color: #2bb673;
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 4px;
+    font-family: 'spectralregular';
+  }
+.userName {
+    font-family: 'montserratregular';
+    float: left;
+    line-height: 60px;
+    width: 25%;
+}
+.userPer {
+    float: left;
+    width: 75%;
+}
+.fullUserDiv {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.userBox {
+    background-color: #fff;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    width: 100%;
+    float: left;
+    padding: 20px;
+}
+.loadBtn {
+    float: right;
+    margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 950px) {
+    .fullUserDiv {
+        width: 100% !important;
+    }
+}

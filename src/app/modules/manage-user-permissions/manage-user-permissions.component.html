@@ -1,0 +1,42 @@
+<div class='p24 fl w100'>
+  <div class='userBox'>
+    <div class='w100 fl'>
+      <div class='w50 fl'>
+        <p class='pageHeader'>Users</p>
+      </div>
+      <div class='w50 fl'>
+        <button
+        class='loadBtn'
+        mat-raised-button
+        color="primary" 
+        (click)="loadGroupDialog()"
+      >
+        Load Group
+      </button>
+      </div>
+    </div>
+    <div *ngFor='let item of users'>
+      <div class='w100 fl fullUserDiv'>
+        <div class='userName'>
+          {{item.username}}
+        </div>
+        <div class='userPer'>
+          <mat-form-field>
+            <mat-select 
+              placeholder="Permission Group" 
+              [value]='item.permission_group'
+              (selectionChange)='updateGroup($event, item.userid)'>
+              <mat-option 
+                *ngFor='let item of permissionGroups' 
+                [value]='item.id'>
+                {{item.group}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-progress-spinner *ngIf="isLoading" color="primary" mode="indeterminate" diameter="50">
+  </mat-progress-spinner>
+</div>

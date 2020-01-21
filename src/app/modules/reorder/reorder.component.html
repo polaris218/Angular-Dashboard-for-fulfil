@@ -1,0 +1,33 @@
+<div class="p24 fl w100">
+  <div class="w100 fl main-container mb20">
+    <div class="w100 fl">
+      <button mat-raised-button color="primary" (click)="downloadOrderSheet()">
+        Download the orders spreadsheet</button
+      ><br /><br />
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="downloadInventoryReport()"
+      >
+        Download the inventory Report</button
+      ><br /><br />
+      <button mat-raised-button color="primary" (click)="uploadOrderSheet()">
+        Upload the orders spreadsheet
+      </button>
+      <input
+        type="file"
+        accept="text/csv"
+        #fileInput
+        hide
+        (change)="onFileChange($event)"
+      />
+    </div>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

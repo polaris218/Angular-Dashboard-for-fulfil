@@ -1,0 +1,400 @@
+<div class="p24 fl w100">
+  <mat-tab-group dynamicHeight color="primary">
+    <mat-tab label="BACKEND">
+      <div class="example-large-box mat-elevation-z4">
+        <div class="filterDd">
+          <mat-form-field class="periodsDd mt15">
+            <mat-label>Environment Type</mat-label>
+            <mat-select
+              value="all"
+              (selectionChange)="getBackEndFilter($event.value)"
+            >
+              <mat-option value="all">
+                All
+              </mat-option>
+              <mat-option value="production">
+                Production
+              </mat-option>
+              <mat-option value="development">
+                Development
+              </mat-option>
+              <mat-option value="local">
+                Local
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="searchBar">
+          <form class="example-form">
+            <mat-form-field class="example-full-width searchBox">
+              <input
+                matInput
+                placeholder="Search"
+                (input)="onSearchBackEnd($event.target.value)"
+                value=""
+              />
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="backEndDataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Date</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.date }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Time</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.time }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="errorMsg">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Error Msg
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.errorMsg }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedBackEndColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedBackEndColumns"
+            ></tr>
+          </table>
+
+          <mat-paginator
+            #paginatorBackEnd
+            [length]="dataLengthBackEnd"
+            [pageSize]="pageSizeBackEnd"
+            [pageSizeOptions]="[100, 150, 200]"
+            (page)="getPaginatorDataBackEnd($event)"
+            showFirstLastButtons
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="FACTORY">
+      <div class="example-large-box mat-elevation-z4">
+        <div class="filterDd">
+          <mat-form-field class="periodsDd mt15">
+            <mat-label>Environment Type</mat-label>
+            <mat-select
+              value="all"
+              (selectionChange)="getFactoryFilter($event.value)"
+            >
+              <mat-option value="all">
+                All
+              </mat-option>
+              <mat-option value="production">
+                Production
+              </mat-option>
+              <mat-option value="development">
+                Development
+              </mat-option>
+              <mat-option value="local">
+                Local
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="searchBar">
+          <form class="example-form">
+            <mat-form-field class="example-full-width searchBox">
+              <input
+                matInput
+                placeholder="Search"
+                (input)="onSearchFactory($event.target.value)"
+                value=""
+              />
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="factoryDataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Date</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.date }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Time</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.time }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="errorMsg">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Error Msg
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.errorMsg }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedFactoryColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedFactoryColumns"
+            ></tr>
+          </table>
+
+          <mat-paginator
+            #paginatorFactory
+            [length]="dataLengthFactory"
+            [pageSize]="pageSizeFactory"
+            [pageSizeOptions]="[100, 150, 200]"
+            (page)="getPaginatorDataFactory($event)"
+            showFirstLastButtons
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="DASHBOARD">
+      <div class="example-large-box mat-elevation-z4">
+        <div class="filterDd">
+          <mat-form-field class="periodsDd mt15">
+            <mat-label>Environment Type</mat-label>
+            <mat-select
+              value="all"
+              (selectionChange)="getDashboardFilter($event.value)"
+            >
+              <mat-option value="all">
+                All
+              </mat-option>
+              <mat-option value="production">
+                Production
+              </mat-option>
+              <mat-option value="development">
+                Development
+              </mat-option>
+              <mat-option value="local">
+                Local
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="searchBar">
+          <form class="example-form">
+            <mat-form-field class="example-full-width searchBox">
+              <input
+                matInput
+                placeholder="Search"
+                (input)="onSearchDashboard($event.target.value)"
+                value=""
+              />
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dashboardDataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Date</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.date }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Time</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.time }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="errorMsg">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Error Msg
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.errorMsg }}</td>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedDashboardColumns"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedDashboardColumns"
+            ></tr>
+          </table>
+
+          <mat-paginator
+            #paginatorDashboard
+            [length]="dataLengthDashboard"
+            [pageSize]="pageSizeDashboard"
+            [pageSizeOptions]="[100, 150, 200]"
+            (page)="getPaginatorDataDashboard($event)"
+            showFirstLastButtons
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="AUTOMATION">
+      <div class="example-large-box mat-elevation-z4">
+        <div class="filterDd">
+          <mat-form-field class="periodsDd mt15">
+            <mat-label>Environment Type</mat-label>
+            <mat-select
+              value="all"
+              (selectionChange)="getAutomationFilter($event.value)"
+            >
+              <mat-option value="all">
+                All
+              </mat-option>
+              <mat-option value="production">
+                Production
+              </mat-option>
+              <mat-option value="development">
+                Development
+              </mat-option>
+              <mat-option value="local">
+                Local
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="searchBar">
+          <form class="example-form">
+            <mat-form-field class="example-full-width searchBox">
+              <input
+                matInput
+                placeholder="Search"
+                (input)="onSearchAutomation($event.target.value)"
+                value=""
+              />
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="automationDataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Date</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.date }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Time</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.time }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="errorMsg">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Error Msg
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.errorMsg }}</td>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedAutomationColumns"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedAutomationColumns"
+            ></tr>
+          </table>
+
+          <mat-paginator
+            #paginatorAutomation
+            [length]="dataLengthAutomation"
+            [pageSize]="pageSizeAutomation"
+            [pageSizeOptions]="[100, 150, 200]"
+            (page)="getPaginatorDataAutomation($event)"
+            showFirstLastButtons
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="INVENTORY">
+      <div class="example-large-box mat-elevation-z4">
+        <div class="filterDd">
+          <mat-form-field class="periodsDd mt15">
+            <mat-label>Environment Type</mat-label>
+            <mat-select
+              value="all"
+              (selectionChange)="getInventoryFilter($event.value)"
+            >
+              <mat-option value="all">
+                All
+              </mat-option>
+              <mat-option value="production">
+                Production
+              </mat-option>
+              <mat-option value="development">
+                Development
+              </mat-option>
+              <mat-option value="local">
+                Local
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="searchBar">
+          <form class="example-form">
+            <mat-form-field class="example-full-width searchBox">
+              <input
+                matInput
+                placeholder="Search"
+                (input)="onSearchInventory($event.target.value)"
+                value=""
+              />
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="inventoryDataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Date</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.date }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Time</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.time }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="errorMsg">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Error Msg
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.errorMsg }}</td>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedInventoryColumns"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedInventoryColumns"
+            ></tr>
+          </table>
+
+          <mat-paginator
+            #paginatorInventory
+            [length]="dataLengthInventory"
+            [pageSize]="pageSizeInventory"
+            [pageSizeOptions]="[100, 150, 200]"
+            (page)="getPaginatorDataInventory($event)"
+            showFirstLastButtons
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

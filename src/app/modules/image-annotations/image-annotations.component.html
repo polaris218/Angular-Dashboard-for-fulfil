@@ -1,0 +1,214 @@
+<div class="p24 fl w100">
+  <div class="fr mt6">
+    <mat-checkbox
+      class="example-margin mr15"
+      [formControl]="autoSaveChk"
+      [(ngModel)]="fillAutoSaveChk"
+      >Auto Save</mat-checkbox
+    >
+  </div>
+  <div class="fr mr20">
+    <button
+      mat-raised-button
+      color="primary"
+      style="width:130px;"
+      (click)="changeDrawMode()"
+    >
+      {{ modeText }}(W)
+    </button>
+  </div>
+  <div class="fr mr20">
+    <button
+      mat-raised-button
+      color="primary"
+      style="width:130px;"
+      (click)="doRedoActivity()"
+    >
+      Redo ( ctrl+Y )
+    </button>
+  </div>
+  <div class="fr mr20">
+    <button
+      mat-raised-button
+      color="primary"
+      style="width:130px;"
+      (click)="doUndoActivity()"
+    >
+      Undo ( ctrl+Z )
+    </button>
+  </div>
+  <div class="w100 fl tc">
+    <p class="cRed mb20">{{ warnMessage }}</p>
+  </div>
+  <div class="w100 fl">
+    <div class="fl mr20 mb20">
+      <button mat-raised-button color="primary" (click)="loadImageDialog()">
+        Load Images
+      </button>
+    </div>
+    <div class="fl mb20">
+      <mat-form-field>
+        <input
+          matInput
+          [formControl]="labeler"
+          [(ngModel)]="fillLabeler"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
+          type="text"
+          placeholder="Labeler"
+        />
+      </mat-form-field>
+    </div>
+    <div class="fr mr20 mb20">
+      <button
+        mat-raised-button
+        color="primary"
+        style="width:130px;"
+        (click)="nextImage()"
+        [disabled]="imageBtns == '1'"
+      >
+        Next (D)
+      </button>
+    </div>
+    <div class="fr mr20 mb20">
+      <button
+        mat-raised-button
+        color="primary"
+        style="width:130px;"
+        (click)="hideAll()"
+        [disabled]="imageBtns == '1'"
+      >
+        {{ hideBtnText }} (H)
+      </button>
+    </div>
+    <div class="fr mr20 mb20">
+      <button
+        mat-raised-button
+        color="primary"
+        style="width:130px;"
+        (click)="hideSingle()"
+        [disabled]="imageBtns == '1'"
+      >
+        Hide
+      </button>
+    </div>
+    <div class="fr mr20 mb20">
+      <button
+        mat-raised-button
+        color="primary"
+        style="width:130px;"
+        (click)="previousImage()"
+        [disabled]="imageIndex == 0 || imageBtns == '1'"
+      >
+        Previous (A)
+      </button>
+    </div>
+  </div>
+  <div class="fl w100">
+    <div class="fl w20">
+      <div class="w100">
+        <div class="labelsDiv">
+          <div class="w100 fl hTit">
+            Info
+          </div>
+          <div class="w100 fl info">
+            <p class="bbcc"><b>Product</b> : {{ infoProductText }}</p>
+            <p class="bbcc"><b>StartDate</b> : {{ infoStartDateText }}</p>
+            <p class="bbcc"><b>EndDate</b> : {{ infoEndDateText }}</p>
+            <p><b>Version</b> : {{ selectedVersion }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w100">
+        <div class="labelsDiv">
+          <div class="w100 fl hTit">
+            Labels
+          </div>
+          <div class="w100 fl detail deList">
+            <p class="cRed" style="margin-bottom: 5px;">{{ labelWarnText }}</p>
+            <button
+              mat-stroked-button
+              class="w100 mb5 bgTheme colF"
+              [class.ActiveLabel]="isAct('No defect')"
+              (click)="setDefect('No defect', '#2BB673')"
+            >
+              <span class="fl num">0</span>No defect
+            </button>
+            <div class="w100 fl" *ngFor="let item of defectList; let i = index">
+              <button
+                mat-stroked-button
+                class="w100 fl mb5 colF"
+                [class.ActiveLabel]="isAct(item.label_name)"
+                [ngStyle]="{ 'background-color': colorsArray[i] }"
+                (click)="setDefect(item.label_name, colorsArray[i])"
+              >
+                <span class="fl num">{{ i + 1 }}</span
+                >{{ item.label_name }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w100">
+        <div class="labelsDiv">
+          <div class="w100 fl hTit">
+            Defects
+          </div>
+          <div class="fl w100 detail">
+            <div
+              class="w100 fl allDef selDef{{ i }}"
+              *ngFor="let item of defects; let i = index"
+            >
+              <div class="fl cursorP cRed" (click)="removeDefect(item.id)">
+                <mat-icon>delete</mat-icon>
+              </div>
+              <div
+                class="fl lh24 cursorP"
+                [ngStyle]="{ color: item.color }"
+                (click)="selectSelection(item.id)"
+              >
+                {{ item.defect }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-decorator fl w65" #myImageDiv style="overflow-x: auto;">
+      <img
+        id="example"
+        [src]="imageUrl"
+        #myImage
+        [ngStyle]="{ width: imgWidth, height: imgHeight, opacity: opImg }"
+      />
+    </div>
+    <div class="pl15 fl w15" style="height:530px; overflow-y:auto;">
+      <cdk-virtual-scroll-viewport itemSize="100" style="height:100%">
+        <div
+          class="w100 fl"
+          *cdkVirtualFor="let item of imageListArray; let i = index"
+        >
+          <div
+            [class.same-inventory-id]="
+              selectedImageDetails.inventoryId === item.inventoryId
+            "
+          >
+            <img
+              [class.selected-image]="item.url == imageUrl"
+              [src]="item.url"
+              class="imgList"
+              (click)="setImage(i)"
+            />
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

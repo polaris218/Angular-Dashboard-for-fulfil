@@ -1,0 +1,50 @@
+.mat-raised-button.mat-primary {
+  background-color: #2bb673;
+  width: auto;
+  font-family: 'spectralregular';
+  border-radius: 5px;
+}
+.dialogTitle {
+  color: #2bb673 !important;
+  font-family: 'spectralregular';
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.cur_point {
+  cursor: pointer;
+}
+.dis_flex {
+  display: flex;
+}
+.selectBtn {
+  background-color: #eee;
+  margin-top: 15px;
+}
+::ng-deep .mat-pseudo-checkbox-checked {
+  background: #2bb673;
+}
+mat-form-field {
+  font-family: 'montserratregular';
+}
+.dialog label,
+::ng-deep .mat-radio-label-content {
+  font-family: 'montserratregular';
+}
+.radioDiv {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+::ng-deep .cdk-overlay-pane {
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .chkBox {
+      width: 100% !important;
+  }
+  .dialogTitle {
+    font-size: 22px;
+    line-height: 52px;
+}
+}

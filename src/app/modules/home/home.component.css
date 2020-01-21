@@ -1,0 +1,310 @@
+.mat-fab.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-mini-fab.mat-primary,
+.mat-raised-button.mat-primary {
+  background-color: #2bb673;
+  font-family: 'spectralregular';
+}
+::ng-deep .mat-toolbar {
+  display: flex;
+}
+.totalOrders {
+  position: absolute;
+  right: 15px;
+  color: #fff;
+  background: #2bb673;
+  height: 35px;
+  width: 35px !important;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+  top: 16px;
+  font-size: 11px;
+}
+.singleOrder {
+  color: #fff;
+  margin-right: 15px;
+  background: #2bb673;
+  height: 25px;
+  width: 25px !important;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 50%;
+  font-size: 11px;
+}
+.cardHeader {
+  color: #2bb673;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 4px;
+  font-family: 'spectralregular';
+}
+::ng-deep .mat-sidenav {
+  display: block;
+}
+::ng-deep .example-is-mobile {
+  background-color: #fff;
+}
+.totalSalesDiv > span:last-child {
+  font-size: 14px;
+}
+.helloTitle {
+  font-weight: 500;
+  font-size: 36px;
+  margin: 10px 0;
+}
+.mat-grid-tile > ::ng-deep figure {
+  justify-content: flex-start !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+.periodsDd {
+  border: 1px solid #eee;
+  border-radius: 50px;
+  padding: 0 20px;
+}
+.periodsDd > ::ng-deep .mat-form-field-wrapper {
+  height: 34px;
+}
+.periodsDd
+  > ::ng-deep
+  .mat-form-field-wrapper
+  > .mat-form-field-flex
+  .mat-form-field-infix {
+  border-top: 7px solid transparent !important;
+}
+.mat-form-field {
+  font-weight: bold;
+  font-size: 12px;
+}
+.periodsDd > ::ng-deep .mat-form-field-wrapper > .mat-form-field-underline {
+  height: 0;
+}
+.periodsDd
+  > ::ng-deep
+  .mat-form-field-wrapper
+  > .mat-form-field-underline
+  > .mat-form-field-ripple {
+  height: 0;
+}
+.lineChartDiv {
+  width: 65%;
+}
+.donutChartDiv {
+  width: 35%;
+  padding-right: 24px;
+}
+.chartSubDiv {
+  background-color: #fff;
+  height: 325px;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+.bottomDivs .orderDiv,
+.bottomDivs .coolDiv,
+.bottomDivs .maintananceDiv {
+  width: 33.3333333%;
+  float: left;
+}
+.bottomDivs .coolDiv {
+  padding: 0 8px;
+}
+.bottomDivs .orderDiv {
+  padding-right: 16px;
+}
+.bottomDivs .maintananceDiv {
+  padding-left: 16px;
+}
+.orderDiv > ::ng-deep .mat-card {
+  padding: 0;
+  min-height: 338px;
+}
+.coolDiv > ::ng-deep .mat-card {
+  padding: 0;
+  min-height: 338px;
+}
+.maintananceDiv > ::ng-deep .mat-card {
+  padding: 0;
+  min-height: 338px;
+}
+.mat-card > ::ng-deep .mat-card-header > .mat-card-header-text {
+  margin: 0;
+}
+.mat-card-header {
+  padding: 20px 15px;
+  border-bottom: 2px solid #eee;
+}
+.mat-card-title,
+.genTitle {
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+  margin: 0 !important;
+  font-family: 'spectralregular';
+}
+.orderNum {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+.orderAmt {
+  font-size: 15px;
+  color: #000;
+}
+.orderDate {
+  font-size: 15px;
+  color: #ccc;
+}
+.dotBtn {
+  position: absolute;
+  right: 10px;
+}
+.ordersList > .mat-list-item {
+  border-bottom: 2px solid #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'montserratregular';
+}
+.mat-list {
+  padding-top: 0;
+  height: 406px;
+  overflow-y: auto;
+  position: relative;
+}
+.statsList > .mat-list-item {
+  height: 38px;
+  font-family: 'montserratregular';
+}
+mat-select,
+mat-option {
+  font-family: 'montserratregular';
+}
+mat-spinner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto !important;
+  top: 0;
+  bottom: 0;
+}
+.totalSalesDiv {
+  color: #a3a9b9;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 53px;
+  width: 84px;
+  font-family: 'spectralregular';
+}
+.totalSalesDiv > span:first-child {
+  font-size: 25px;
+}
+.orderPaginate {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+mat-form-field {
+  font-family: 'montserratregular';
+}
+.resetInventoryBtn {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+}
+.genBtn {
+  margin: 0 auto;
+}
+.coreTableDiv {
+  width: 33.33%;
+  padding-right: 15px;
+}
+.coreChartDiv {
+  width: 66.66%;
+  padding-left: 15px;
+}
+table {
+  width: 100%;
+  font-family: 'montserratregular';
+}
+td.mat-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  padding-left: 10px;
+}
+.titleDiv {
+  background-color: #fff;
+  padding: 10px;
+}
+.tableShadow {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+.chartTitle {
+  color: #2bb673;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  font-family: 'spectralregular';
+}
+.coreChartDiv {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+@media only screen and (max-width: 1199px) {
+  .periodsDd > ::ng-deep .mat-form-field-wrapper {
+    width: 100px;
+  }
+  .coreChartDiv,
+  .coreTableDiv {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .donutChartDiv {
+    width: 96%;
+    margin-right: 0;
+    margin-bottom: 15px;
+    height: auto;
+  }
+  .lineChartDiv {
+    width: 96%;
+    margin-right: 0;
+    margin-bottom: 15px;
+    height: auto;
+  }
+  .bottomDivs .orderDiv,
+  .bottomDivs .coolDiv,
+  .bottomDivs .maintananceDiv {
+    width: 98%;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .donutChartDiv,
+  .maintananceDiv,
+  .lineChartDiv,
+  .coolDiv,
+  .orderDiv {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .coreChartDiv {
+    width: 100%;
+  }
+  .coreTableDiv {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+}

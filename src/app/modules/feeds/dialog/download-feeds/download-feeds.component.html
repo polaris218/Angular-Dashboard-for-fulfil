@@ -1,0 +1,65 @@
+<form [formGroup]="downloadForm" (submit)="onSubmit($event)">
+  <h1 mat-dialog-title>Download Feeds</h1>
+  <div class="modal-wrapper">
+    <mat-grid-list cols="1" rowHeight="70px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field [hideRequiredMarker]="false">
+          <mat-select placeholder="Environment" formControlName="env" required>
+            <mat-option value="dev">Development</mat-option>
+            <mat-option value="prod">Production</mat-option>
+            <mat-option value="local" [disabled]="isProd">Local</mat-option>
+          </mat-select>
+          <mat-error *ngIf="submitted && f.env.errors && f.env.errors.required"
+            >Environment is required !</mat-error
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field [hideRequiredMarker]="false">
+          <mat-select
+            placeholder="Target Table"
+            formControlName="table"
+            required
+          >
+            <mat-option value="product">Product</mat-option>
+            <mat-option value="inventory">Inventory</mat-option>
+            <mat-option value="metadata">Metadata</mat-option>
+            <mat-option value="supplierdelivery">Supplier Delivery</mat-option>
+            <mat-option value="variants">Variants</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="submitted && f.table.errors && f.table.errors.required"
+            >Target Table is required !
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field [hideRequiredMarker]="false">
+          <input
+            matInput
+            placeholder="API Key"
+            formControlName="key"
+            required
+          />
+          <mat-error *ngIf="submitted && f.key.errors && f.key.errors.required"
+            >API key is required !</mat-error
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div mat-dialog-actions class="footer">
+    <button mat-button (click)="close()" type="button" cdkFocusInitial>
+      Cancel
+    </button>
+    <button mat-button type="submit" color="primary">Download</button>
+  </div>
+</form>
+
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>

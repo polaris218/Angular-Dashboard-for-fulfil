@@ -1,0 +1,227 @@
+.titleDivShort {
+  background: #2bb673;
+  height: 84px;
+  width: 60px;
+}
+.titleDivFull {
+  background: #2bb673;
+  height: 84px;
+  width: 200px;
+}
+.menuBtnFull,
+.menuBtnShort,
+.userBtn {
+  color: #2bb673;
+}
+.titleP {
+  color: #2bb673;
+  text-align: center;
+  padding-left: 10px;
+  font-family: 'montserratregular';
+  font-weight: bold;
+}
+mat-sidenav {
+  width: 200px;
+  background: #2bb673;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #2bb673 !important;
+}
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background: #2bb673;
+}
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #2bb673;
+}
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #2bb673;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #2bb673;
+}
+::ng-deep .mat-ink-bar {
+  background-color: #2bb673 !important;
+  min-width: 120px;
+}
+::ng-deep
+  .mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: #2bb673 !important;
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #2bb673 !important;
+}
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #2bb673;
+}
+::ng-deep .mat-chip.mat-standard-chip {
+  background-color: #2bb673;
+  color: #fff;
+}
+::ng-deep .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
+  background-color: #2bb673 !important;
+}
+::ng-deep
+  .owl-dt-calendar-table
+  .owl-dt-calendar-cell-today:not(.owl-dt-calendar-cell-selected) {
+  background-color: #2bb673 !important;
+}
+::ng-deep .owl-dt-container-buttons {
+  color: #2bb673 !important;
+}
+::ng-deep .mat-progress-spinner {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 42%;
+  bottom: 0;
+  z-index: 1;
+}
+mat-sidenav mat-icon {
+  color: #424242;
+}
+::ng-deep .mat-raised-button.mat-primary[disabled],
+.mat-raised-button[disabled][disabled] {
+  background-color: #aaa !important;
+}
+.ActiveItem {
+  border-left: 5px solid #424242 !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+.mat-nav-list .mat-list-item:focus,
+.mat-nav-list .mat-list-item:hover {
+  border-left: 5px solid #424242;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.mat-drawer-container {
+  background-color: #eef5f6;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+h1.example-app-name {
+  line-height: 90px;
+  padding-left: 45px;
+}
+.example-sidenav-container {
+  flex: 1;
+}
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}
+.sidenavHided {
+  width: 60px;
+  left: 60px;
+  visibility: visible !important;
+}
+.sidenavHided span {
+  display: none;
+}
+.sidenavContaier {
+  padding-left: 60px;
+}
+mat-sidenav span {
+  color: #fff;
+  font-family: 'spectralregular';
+}
+.mat-toolbar.mat-primary {
+  background-color: #fff;
+  color: #fff;
+  padding: 0;
+}
+.sideItems mat-icon {
+  width: 50px;
+  text-align: center;
+}
+.mat-list-base .mat-list-item {
+  font-size: 14px;
+  height: 60px;
+}
+.userimg {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.userdd img,
+button {
+  float: left;
+}
+.userdd {
+  position: absolute;
+  right: 35px;
+}
+.userBtn {
+  min-width: 20px;
+  padding: 0;
+}
+.mat-toolbar-single-row {
+  height: 84px;
+}
+.example-app-name {
+  font-size: 50px;
+}
+.sideItems {
+  width: 97% !important;
+}
+.sideItemsShort {
+  width: 90% !important;
+}
+.disNone {
+  display: none;
+}
+.lArrow {
+  width: 14px;
+}
+.menuIcon {
+  width: 14px;
+}
+.menuBtn {
+  width: 60px;
+  padding-left: 10px;
+}
+.titleDivShort h1 {
+  padding-left: 5px;
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidenavHided {
+    width: 200px;
+    left: 0;
+    visibility: visible !important;
+  }
+  .sidenavHided span {
+    display: block;
+  }
+  .sidenavContaier {
+    padding-left: 0;
+  }
+  .sidenavHided,
+  mat-sidenav {
+    top: 84px !important;
+  }
+  .sidenavContaier,
+  .example-sidenav-container {
+    margin-top: 84px !important;
+  }
+  .titleDivShort {
+    display: none;
+  }
+  .mat-nav-list .mat-list-item:focus {
+    border-left: 0 solid #424242;
+    background-color: transparent;
+  }
+}

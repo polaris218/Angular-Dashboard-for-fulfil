@@ -1,0 +1,529 @@
+<div class="p24 fl w100">
+  <div class="w100 fl">
+    <div class="fr mb20">
+      <button mat-raised-button color="primary" (click)="loadOrder()">
+        Load Order
+      </button>
+    </div>
+    <div class="fr mb20 mr20">
+      <mat-form-field>
+        <input
+          type="text"
+          placeholder="Purchase Order"
+          aria-label="Purchase Order"
+          #purchaseOrderInput
+          matInput
+          [formControl]="orderInput"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="w100 fl example-container mb20" *ngIf="ordersLoad">
+    <div class="w100 fl">
+      <div class="w50 fl br00">
+        <div class="w100 fl mb10">
+          <div class="w10 fl">
+            &nbsp;
+          </div>
+          <div class="w40 fl upcTitle" style="text-align: left;">
+            <p>UPC</p>
+          </div>
+          <div class="w20 fl upcTitle">
+            <p>Ordered</p>
+          </div>
+          <div class="w30 fl upcTitle">
+            <p>Received</p>
+          </div>
+        </div>
+      </div>
+      <div class="w50 fl">
+        <div class="w100 fl mb10">
+          <div class="w10 fl">
+            &nbsp;
+          </div>
+          <div class="w40 fl upcTitle" style="text-align: left;">
+            <p>UPC</p>
+          </div>
+          <div class="w20 fl upcTitle">
+            <p>Ordered</p>
+          </div>
+          <div class="w30 fl upcTitle">
+            <p>Received</p>
+          </div>
+        </div>
+      </div>
+      <div class="w100 fl upcItems mb5">
+        <div class="w50 fl disFlex" *ngFor="let item of ordersList">
+          <div class="w10">
+            <mat-checkbox
+              disabled="true"
+              [checked]="getCheckedValue(item.received_qty)"
+            ></mat-checkbox>
+          </div>
+          <div class="w40" style="text-align: left;">
+            <p>{{ item.upc }}</p>
+          </div>
+          <div class="w20">
+            <p>{{ item.quantity_ordered }}</p>
+          </div>
+          <div class="w30">
+            <input
+              type="number"
+              [value]="item.received_qty"
+              disabled
+              class="inputRec"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w100 fl example-container" *ngIf="isBarcodeDiv">
+    <div class="w100 fl">
+      <div class="fl mb20 pl20 mr20">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="scannerUpc"
+            (input)="getMetaDataByUpc()"
+            #scannerInput
+            placeholder="Barcode"
+          />
+        </mat-form-field>
+      </div>
+      <div class="fr mb20 pr20" *ngIf="isScanned">
+        <button mat-raised-button color="primary" (click)="refreshScan()">
+          Come back to it & scan another
+        </button>
+      </div>
+      <div class="fr mb20 mr20" style="line-height: 36px;" *ngIf="isScanned">
+        OR
+      </div>
+      <div class="fr mb20 mr20" *ngIf="isScanned">
+        <button mat-raised-button color="primary" (click)="showMetaForm()">
+          Enter Data
+        </button>
+      </div>
+    </div>
+    <div class="w100 fl" *ngIf="isMetaFormShow">
+      <div class="firstInputsLeft">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="productId"
+            readonly
+            [(ngModel)]="fillProductId"
+            placeholder="Product Id"
+          />
+        </mat-form-field>
+      </div>
+      <div class="firstInputsRight">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="descriptor"
+            #descriptorFocus
+            [(ngModel)]="fillDescriptor"
+            placeholder="Descriptor"
+          />
+        </mat-form-field>
+      </div>
+      <div class="firstInputsLeft">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="upc"
+            readonly
+            [(ngModel)]="fillUpc"
+            placeholder="UPC"
+          />
+        </mat-form-field>
+      </div>
+      <div class="firstInputsRight">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="department"
+            [(ngModel)]="fillDepartment"
+            placeholder="Department"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="aisle"
+            [(ngModel)]="fillAisle"
+            placeholder="Aisle"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="height"
+            [(ngModel)]="fillHeight"
+            placeholder="Height"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="length"
+            [(ngModel)]="fillLength"
+            placeholder="Length"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="lengthSecondary"
+            [(ngModel)]="fillLengthSecondary"
+            placeholder="Length Secondary"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="width"
+            [(ngModel)]="fillWidth"
+            placeholder="Width"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="widthSecondary"
+            [(ngModel)]="fillWidthSecondary"
+            placeholder="Width Secondary"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="diameter"
+            [(ngModel)]="fillDiameter"
+            placeholder="Diameter"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="diameterSecondary"
+            [(ngModel)]="fillDiameterSecondary"
+            placeholder="Diameter Secondary"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="diameterNarrow"
+            [(ngModel)]="fillDiameterNarrow"
+            placeholder="Diameter Narrow"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="mass"
+            [(ngModel)]="fillMass"
+            placeholder="Mass"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="volume"
+            [(ngModel)]="fillVolume"
+            placeholder="Volume"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="boundingBoxVolume"
+            [(ngModel)]="fillBoundingBoxVolume"
+            placeholder="Bounding Box Volume"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="density"
+            [(ngModel)]="fillDensity"
+            placeholder="Density"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="cog"
+            [(ngModel)]="fillCog"
+            placeholder="COG"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="shape"
+            [(ngModel)]="fillShape"
+            placeholder="Shape"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="material"
+            [(ngModel)]="fillMaterial"
+            placeholder="Material"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="packageType"
+            [(ngModel)]="fillPackageType"
+            placeholder="Package Type"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="packagingMods"
+            [(ngModel)]="fillPackagingMods"
+            placeholder="Packaging Mods"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="transparency"
+            [(ngModel)]="fillTransparency"
+            placeholder="Transparency"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="damageable"
+            [(ngModel)]="fillDamageable"
+            placeholder="Damageable"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="damaging"
+            [(ngModel)]="fillDamaging"
+            placeholder="Damaging"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="hasStem"
+            [(ngModel)]="fillHasStem"
+            placeholder="Has Stem"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="isSharp"
+            [(ngModel)]="fillIsSharp"
+            placeholder="Is Sharp"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="storageTemp"
+            [(ngModel)]="fillStorageTemp"
+            placeholder="Storage Temp"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="storageHumidity"
+            [(ngModel)]="fillStorageHumidity"
+            placeholder="Storage Humidity"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="ethyleneSensitivity"
+            [(ngModel)]="fillEthyleneSensitivity"
+            placeholder="Ethylene Sensitivity"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="co2Sensitivity"
+            [(ngModel)]="fillCo2Sensitivity"
+            placeholder="Co2 Sensitivity"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="maxInventory"
+            [(ngModel)]="fillMaxInventory"
+            placeholder="Max Inventory"
+          />
+        </mat-form-field>
+      </div>
+      <div class="allInputsDiv">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="shelfLife"
+            [(ngModel)]="fillShelfLife"
+            placeholder="Shelf Life"
+          />
+        </mat-form-field>
+      </div>
+      <div class="firstInputsRight">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="storageConfig"
+            [(ngModel)]="fillStorageConfig"
+            placeholder="Storage Config"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="w100 fl" *ngIf="isScanned">
+      <div class="fl pl20 mr20">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="receivedQty"
+            #qtyFocus
+            placeholder="QTY"
+          />
+        </mat-form-field>
+      </div>
+      <div class="fl pl20 mr20">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [formControl]="boxId"
+            (keydown.enter)="submitMetaData()"
+            placeholder="Box Id"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

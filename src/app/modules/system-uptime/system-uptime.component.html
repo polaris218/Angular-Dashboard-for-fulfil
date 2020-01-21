@@ -1,0 +1,185 @@
+<div class="p24 fl w100 fontMon">
+  <div class='w100 fl'>
+    <p class='tc'>
+      <span class='status'>200 OK</span>
+      <span class='link'>https://api.fulfil.store/product/search</span>
+    </p>
+    <p class='tc lastCheck'>Last check: 11/12/2019, 2:53:02 PM GMT+5:30</p>
+    <p class='percent'>99.99%</p>
+    <p class='rolling'>1 month rolling uptime (since Oct 12)</p>
+  </div>
+  <div class='w100 fl'>
+    <div class='leftBorder'></div>
+    <div class='lastLabel'>
+      LAST 24 HOURS
+    </div>
+    <div class='rightBorder'></div>
+  </div>
+  <div class='w100 fl'>
+    <div class='apdexChartLeft'>
+      <p>1.0</p>
+      <p>APDEX (1.0)</p>
+    </div>
+    <div class='apdexChartRight'>
+      <div class="history">
+        <div class="apdex-timeline"><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-12T12:00:00Z"
+            class="ends-at">5:30 PM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-12T14:00:00Z"
+            class="ends-at">7:30 PM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-12T16:00:00Z"
+            class="ends-at">9:30 PM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-12T18:00:00Z"
+            class="ends-at">11:30 PM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-12T20:00:00Z"
+            class="ends-at">1:30 AM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 50.0%;"><span>.50</span></i></output><output><time datetime="2019-11-12T22:00:00Z"
+            class="ends-at">3:30 AM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-13T00:00:00Z"
+            class="ends-at">5:30 AM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-13T02:00:00Z"
+            class="ends-at">7:30 AM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-13T04:00:00Z"
+            class="ends-at">9:30 AM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-13T06:00:00Z"
+            class="ends-at">11:30 AM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-13T08:00:00Z"
+            class="ends-at">1:30 PM</time><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><i class="gold"
+            style="height: 100.0%;"><span>1.0</span></i></output><output><time datetime="2019-11-13T10:00:00Z"
+            class="ends-at">3:30 PM</time><i class="gold" style="height: 100.0%;"><span>1.0</span></i></output></div>
+      </div>
+    </div>
+  </div>
+  <div class='w100 fl mt50'>
+    <div class='responseChartLeft'>
+      <p>186ms</p>
+      <p><span>RESPONSE TIME</span></p>
+      <p>(incl. LATENCY)</p>
+    </div>
+    <div class='responseChartRight'>
+      <canvas baseChart [datasets]="responseBarChartData" [labels]="responseBarChartLabels"
+        [options]="responseBarChartOptions" [legend]="responseBarChartLegend" [colors]="responseBarChartColors"
+        chartType="bar">
+      </canvas>
+    </div>
+  </div>
+  <div class='w100 fl mt50'>
+    <div class='leftBorder'></div>
+    <div class='lastLabel'>
+      LAST MONTHS
+    </div>
+    <div class='rightBorder'></div>
+  </div>
+  <div class='w100 fl'>
+    <div class='calendar'>
+      <div class='months'>
+        <div class='monthTitle'>
+          JUN: 100%
+        </div>
+        <div class='days'>
+          <div class='singleDay' *ngFor='let item of days'>
+            <svg viewBox="0 0 16 16" class="icon icon-circle normalSvg" matTooltip='{{item}}'>
+              <circle cx="8" cy="8" r="7"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class='months'>
+        <div class='monthTitle'>
+          JUL: 100%
+        </div>
+        <div class='days'>
+          <div class='singleDay' *ngFor='let item of days'>
+            <svg viewBox="0 0 16 16" class="icon icon-circle normalSvg" matTooltip='{{item}}'>
+              <circle cx="8" cy="8" r="7"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class='months'>
+        <div class='monthTitle'>
+          AUG: 100%
+        </div>
+        <div class='days'>
+          <div class='singleDay' *ngFor='let item of days'>
+            <svg viewBox="0 0 16 16" class="icon icon-circle normalSvg" matTooltip='{{item}}'>
+              <circle cx="8" cy="8" r="7"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class='months'>
+        <div class='monthTitle'>
+          SEP: 100%
+        </div>
+        <div class='days'>
+          <div class='singleDay' *ngFor='let item of days'>
+            <svg viewBox="0 0 16 16" class="icon icon-circle normalSvg" matTooltip='{{item}}'>
+              <circle cx="8" cy="8" r="7"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class='months'>
+        <div class='monthTitle'>
+          OCT: 100%
+        </div>
+        <div class='days'>
+          <div class='singleDay' *ngFor='let item of days'>
+            <svg viewBox="0 0 16 16" class="icon icon-circle normalSvg" matTooltip='{{item}}'>
+              <circle cx="8" cy="8" r="7"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class='months'>
+        <div class='monthTitle'>
+          NOV: 99.99%
+        </div>
+        <div class='days'>
+          <div class='singleDay' *ngFor='let item of days'>
+            <svg viewBox="0 0 16 16" [ngClass]="{ greenSvg: item == 13 }" class="icon icon-circle normalSvg"
+              matTooltip='{{item}}'>
+              <circle cx="8" cy="8" r="7"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='timeLines'>
+      <div class='normalTime'>
+        <svg viewBox="0 0 16 16" class="icon icon-circle normalSvg">
+          <circle cx="8" cy="8" r="7"></circle>
+        </svg>
+        No data
+      </div>
+      <div class='greenTime'>
+        <svg viewBox="0 0 16 16" class="icon icon-circle greenSvg">
+          <circle cx="8" cy="8" r="7"></circle>
+        </svg>
+        No downtime
+      </div>
+      <div class='orangeTime'>
+        <svg viewBox="0 0 16 16" class="icon icon-circle orangeSvg">
+          <circle cx="8" cy="8" r="7"></circle>
+        </svg>
+        < 15m downtime </div> <div class='redTime'>
+          <svg viewBox="0 0 16 16" class="icon icon-circle redSvg">
+            <circle cx="8" cy="8" r="7"></circle>
+          </svg>
+          > 15m downtime
+      </div>
+    </div>
+  </div>
+</div>

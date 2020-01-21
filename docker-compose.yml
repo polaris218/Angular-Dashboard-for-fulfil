@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  dashboard:
+    image: gcr.io/fulfil-web/dashboard
+    build:
+      context: ./
+      dockerfile: ./environment/production/Dockerfile
+    ports:
+      - 80:80
+
+  dashboard-development:
+    image: gcr.io/fulfil-web/dashboard:development
+    build:
+      context: ./
+      dockerfile: ./environment/development/Dockerfile
+    ports:
+      - 8080:4200
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app

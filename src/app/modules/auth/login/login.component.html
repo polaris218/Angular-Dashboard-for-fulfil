@@ -1,0 +1,59 @@
+<div class="p24 fl w100">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
+    <div class="example-container">
+      <div class="logoDiv">
+        <img src="assets/images/logo_white.png" />
+      </div>
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="username"
+          placeholder="Username"
+          autofocus
+          required
+        />
+        <mat-error
+          *ngIf="
+            submitted &&
+            !!f?.username?.errors &&
+            !!f?.username?.errors?.required
+          "
+          >Username is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+          required
+          (keyup.enter)="onSubmit($event)"
+        />
+        <mat-error
+          *ngIf="
+            submitted && !!f?.password.errors && !!f?.password.errors.required
+          "
+          >Password is required</mat-error
+        >
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [class.active]="isLoading"
+      >
+        <span class="button-text" [class.active]="isLoading">
+          LOGIN
+        </span>
+        <mat-spinner
+          *ngIf="isLoading"
+          [class.active]="isLoading"
+          class="spinner"
+          color="warn"
+          diameter="20"
+        ></mat-spinner>
+      </button>
+    </div>
+  </form>
+</div>

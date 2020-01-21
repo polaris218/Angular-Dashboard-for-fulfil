@@ -1,0 +1,158 @@
+<div class="dis_flex">
+  <h1 mat-dialog-title class="dialogTitle w95">Load Images</h1>
+  <mat-icon class="mt15 cur_point" (click)="onCloseMain()">clear</mat-icon>
+</div>
+<div mat-dialog-content class="w100 fl dialog">
+  <mat-form-field class="w100">
+    <mat-select
+      [formControl]="productSel"
+      [(ngModel)]="fillSelectedPId"
+      placeholder="Select Product"
+      required
+    >
+      <mat-option *ngFor="let item of finalProducts" [value]="item.id">
+        {{ item.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <div class="w100 fl">
+    <input
+      [owlDateTime]="dt1"
+      [formControl]="startTime"
+      [(ngModel)]="fillStartTime"
+      class="dtPicker"
+      [owlDateTimeTrigger]="dt1"
+      placeholder="Start Time"
+    />
+    <owl-date-time #dt1 showSecondsTimer="true"></owl-date-time>
+  </div>
+  <div class="w100 fl">
+    <input
+      [owlDateTime]="dt2"
+      [formControl]="endTime"
+      [(ngModel)]="fillEndTime"
+      class="dtPicker"
+      [owlDateTimeTrigger]="dt2"
+      placeholder="End Time"
+    />
+    <owl-date-time #dt2 showSecondsTimer="true"></owl-date-time>
+  </div>
+  <div class="w100 fl">
+    <p class="imgTypeLable fl mr15 fBold">Image Type :</p>
+    <section class="example-section fl">
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="irChk"
+        [(ngModel)]="fillIrChk"
+      >
+        ir</mat-checkbox
+      >
+      <mat-checkbox
+        class="example-margin"
+        [formControl]="rgbChk"
+        [(ngModel)]="fillRgbChk"
+      >
+        rgb</mat-checkbox
+      >
+    </section>
+  </div>
+  <div class="w100 fl">
+    <section class="example-section fl">
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="labelledChk"
+        [(ngModel)]="fillLabelledChk"
+      >
+        Labelled</mat-checkbox
+      >
+      <mat-checkbox
+        class="example-margin"
+        [formControl]="unlabelledChk"
+        [(ngModel)]="fillUnlabelledChk"
+      >
+        Unlabelled</mat-checkbox
+      >
+    </section>
+  </div>
+  <div class="w100 fl mt10">
+    <p class="imgTypeLable fl mr15 fBold">Grade :</p>
+    <section class="example-section fl">
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="gradeAChk"
+        [(ngModel)]="fillGradeAChk"
+      >
+        A</mat-checkbox
+      >
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="gradeBChk"
+        [(ngModel)]="fillGradeBChk"
+      >
+        B</mat-checkbox
+      >
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="gradeCChk"
+        [(ngModel)]="fillGradeCChk"
+      >
+        C</mat-checkbox
+      >
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="gradePassChk"
+        [(ngModel)]="fillGradePassChk"
+      >
+        Pass</mat-checkbox
+      >
+      <mat-checkbox
+        class="example-margin mr15"
+        [formControl]="gradeFailChk"
+        [(ngModel)]="fillGradeFailChk"
+      >
+        Fail</mat-checkbox
+      >
+    </section>
+  </div>
+  <div class="w100 fl">
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="dialogVersion"
+        [(ngModel)]="fillDialogVersion"
+        type="text"
+        placeholder="Version*"
+      />
+    </mat-form-field>
+  </div>
+  <div class="w100 fl">
+    <mat-form-field>
+      <input 
+        matInput
+        [formControl]="groupId"
+        [(ngModel)]="fillgroupId"
+        type="text"
+        placeholder="Group ID*"
+      />
+    </mat-form-field>
+  </div>
+</div>
+
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>
+<div mat-dialog-actions>
+  <button
+    class="fr selectBtn"
+    mat-button
+    style="background-color:#2BB673;
+    font-family: spectralregular; color:#fff;"
+    (click)="onLoadImage()"
+  >
+    Load
+  </button>
+</div>

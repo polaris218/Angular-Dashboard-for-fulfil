@@ -1,0 +1,147 @@
+.mat-raised-button.mat-primary {
+  background-color: #2bb673;
+  width: auto;
+  font-family: 'spectralregular';
+  border-radius: 5px;
+}
+.imgAnn ::ng-deep .mat-form-field-infix {
+  border-top: 6px solid transparent;
+}
+.dialogTitle {
+  color: #2bb673 !important;
+  font-family: 'spectralregular';
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.cur_point {
+  cursor: pointer;
+}
+.dis_flex {
+  display: flex;
+}
+.selectBtn {
+  background-color: #eee;
+  margin-top: 15px;
+}
+.imageSelection ::ng-deep .mat-list-text {
+  padding-right: 0 !important;
+}
+.imageSelection ::ng-deep .mat-list-item-content {
+  padding: 0;
+}
+.imageSelection ::ng-deep .mat-pseudo-checkbox {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+::ng-deep .mat-pseudo-checkbox-checked {
+  background: #2bb673;
+}
+.imageSelection .mat-list-option:focus,
+.mat-list-option:hover {
+  background-color: transparent;
+}
+.labelsDiv {
+  -moz-border-radius: 5px 5px 5px 5px;
+  -moz-box-shadow: 0 0 6px #c8c8c8;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 0 0 6px #c8c8c8;
+  background-color: #ffffff;
+  border: 1px solid #c8c8c8;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0 6px #c8c8c8;
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+  position: relative;
+  margin-bottom: 10px;
+  width: 90%;
+}
+.diaMsg {
+  position: absolute;
+  bottom: -7px;
+  color: red;
+}
+.hTit {
+  font-family: 'spectralregular';
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.deList {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-bottom: 0;
+}
+.detail,
+.detail button {
+  font-family: 'montserratregular';
+}
+.info {
+  font-family: 'spectralregular';
+}
+mat-form-field {
+  width: 100%;
+  font-family: 'montserratregular';
+}
+.dialog label,
+::ng-deep .mat-radio-label-content {
+  font-family: 'montserratregular';
+}
+.dtPicker {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 7px;
+  font-size: 16px;
+  font-family: 'montserratregular';
+  outline: 0;
+  margin-bottom: 20px;
+}
+.imgTypeLable {
+  font-family: 'spectralregular';
+  margin-bottom: 7px;
+}
+.newLabelInput {
+  position: absolute;
+  bottom: 0;
+  width: 94%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+  background: #fff;
+}
+.ActiveLabel {
+  border: 1px outset #000;
+  color: #000;
+  font-weight: bold;
+  -moz-box-shadow: 0 2px 4px #000;
+  -webkit-box-shadow: 0 2px 4px #000;
+  box-shadow: 0 2px 4px #000;
+}
+.num {
+  position: absolute;
+  left: 10px;
+}
+.imgList {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 85%;
+}
+.ActiveImage {
+  border-right: 3px solid red;
+}
+.image-decorator div {
+  margin: 0 auto;
+}
+
+.selected-image {
+  border: 4px solid red;
+}
+
+.same-inventory-id {
+  border-left: 4px solid #3f51b5;
+}

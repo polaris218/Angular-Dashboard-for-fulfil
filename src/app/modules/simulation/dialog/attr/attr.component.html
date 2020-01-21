@@ -1,0 +1,37 @@
+<h1 mat-dialog-title class="dialogTitle" *ngFor="let item of selectedAttr">
+  {{ item.Key }}
+</h1>
+<div mat-dialog-content>
+  <div class="attributesDiv" style="width:100%;">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Attributes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list class="statsList" *ngIf="withKey == 1">
+          <mat-list-item *ngFor="let item of subSelectedArray1">
+            <div class="fl w50 f14 pl5 br lh30 h28">{{ item.Key }}</div>
+            <div class="fl w50 f14 f12Res pl5 lh30 h28 tOver">
+              {{ item.value }}
+            </div>
+          </mat-list-item>
+        </mat-list>
+        <mat-list class="statsList" *ngIf="withKey == 0">
+          <mat-list-item *ngFor="let item of subSelectedArray">
+            <div class="fl w100 f14 pl5 br lh30 h28 ">{{ item }}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button class="fr selectBtn" mat-button (click)="onClose()">Close</button>
+</div>
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>

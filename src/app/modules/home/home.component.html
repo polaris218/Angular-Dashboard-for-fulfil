@@ -1,0 +1,323 @@
+<div class="p24 fl w100">
+  <div class="w100 fl">
+    <div class="fl donutChartDiv">
+      <div class="w100 fl chartSubDiv">
+        <div class="w50 fl">
+          <p class="cardHeader">Your Sales</p>
+        </div>
+        <div class="w50 fr">
+          <mat-form-field floatLabel="never" class="fr periodsDd">
+            <mat-label>Period</mat-label>
+            <mat-select
+              [value]="currentYear"
+              (selectionChange)="getDoughnutChartData($event.value)"
+            >
+              <mat-option [value]="lastYear">
+                Last Year
+              </mat-option>
+              <mat-option [value]="currentYear">
+                Current Year
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="w100 fl mt15 posRel">
+          <div class="totalSalesDiv">
+            <span>{{ totalFilterdOrders }}</span
+            ><br />
+            <span>Sales</span>
+          </div>
+          <canvas
+            baseChart
+            [data]="doughnutChartData"
+            width="400"
+            height="200"
+            [labels]="doughnutChartLabels"
+            [legend]="false"
+            [chartType]="doughnutChartType"
+            [colors]="doughnutColors"
+          >
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="fl lineChartDiv">
+      <div class="w100 fl chartSubDiv">
+        <div class="w50 fl">
+          <p class="cardHeader">Report</p>
+        </div>
+        <div class="w50 fr">
+          <mat-form-field floatLabel="never" class="fr periodsDd">
+            <mat-label>Period</mat-label>
+            <mat-select
+              [value]="currentYear"
+              (selectionChange)="getLineChartData($event.value)"
+            >
+              <mat-option [value]="lastYear">
+                Last Year
+              </mat-option>
+              <mat-option [value]="currentYear">
+                Current Year
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="w100 fl mt15">
+          <canvas
+            baseChart
+            width="400"
+            height="250"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [legend]="false"
+            [colors]="lineChartColors"
+            [plugins]="lineChartOptions"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt15 w100 fl bottomDivs">
+    <div class="orderDiv">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Orders</mat-card-title>
+          <div class="totalOrders">
+            <p>{{ totalOrders }}</p>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list class="ordersList">
+            <mat-list-item *ngFor="let order of pagedList; let i = index">
+              <div class="singleOrder">
+                <p>{{ i + 1 }}</p>
+              </div>
+              <div>
+                <p class="orderNum">Order #{{ order.order_id }}</p>
+                <p>
+                  <span class="orderAmt">${{ order.price }} </span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="orderDate">{{
+                    order.order_date | date: 'MM/dd hh:mm a'
+                  }}</span>
+                </p>
+              </div>
+              <div class="dotBtn">
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="Example icon-button with a menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button
+                    mat-menu-item
+                    (click)="reOrder(order.product_id, order.cart_id)"
+                  >
+                    <span>Reorder</span>
+                  </button>
+                </mat-menu>
+              </div>
+            </mat-list-item>
+            <mat-paginator
+              class="orderPaginate"
+              [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = OnPageChange($event)"
+            >
+            </mat-paginator>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="coolDiv">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Cool Stats</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list class="statsList">
+            <mat-list-item>
+              <p class="f14">Carousel uptime 127 hours</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="f14">167 items loaded</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="f14">231 items in catalog</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="f14">3440 orders processed</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="f14">Average fulfilment time 6 minutes</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="f14">Most ordered item : Avocado</p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="maintananceDiv">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Maintenance Routines</mat-card-title>
+          <button
+            mat-raised-button
+            color="primary"
+            class="resetInventoryBtn"
+            (click)="resetInventory()"
+          >
+            Reset Inventory
+          </button>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list class="maintanancelist">
+            <mat-list-item>
+              <p class="genTitle">Generate Fake Order</p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-form-field class="mt15 w100">
+                <input
+                  type="number"
+                  [formControl]="minItemsPerOrder"
+                  matInput
+                  placeholder="Minimum Items Per Order"
+                />
+              </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-form-field class="mt15 w100">
+                <input
+                  type="number"
+                  [formControl]="maxItemsPerOrder"
+                  matInput
+                  placeholder="Maximum Items Per Order"
+                />
+              </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-form-field class="mt15 w100">
+                <input
+                  type="number"
+                  [formControl]="orderNumber"
+                  matInput
+                  placeholder="Orders Number"
+                />
+              </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-form-field class="mt15 w100">
+                <input
+                  type="text"
+                  [formControl]="carrier"
+                  matInput
+                  placeholder="Carrier"
+                />
+              </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-form-field class="mt15 w100">
+                <mat-select [formControl]="categoryId" placeholder="Category">
+                  <mat-option
+                    *ngFor="let category of categories[0]"
+                    [value]="category.id"
+                  >
+                    {{ category.name }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+              <button
+                mat-raised-button
+                class="genBtn"
+                color="primary"
+                (click)="generateFakeOrder()"
+              >
+                Generate
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="w100 fl mt15">
+    <div class="coreTableDiv fl">
+      <div class="coreTable">
+        <div class="w100 fl titleDiv">
+          <p class="chartTitle">Core Commands</p>
+        </div>
+        <div class="mat-elevation-z8 tableShadow">
+          <table mat-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="startTime">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Start Time
+              </th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.startTime }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="endTime">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                End Time
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.endTime }}</td>
+            </ng-container>
+            <ng-container matColumnDef="distance">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">
+                Distance
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.distance }}</td>
+            </ng-container>
+            <ng-container matColumnDef="speed">
+              <th mat-header-cell *matHeaderCellDef class="fBold tc">Speed</th>
+              <td mat-cell *matCellDef="let element" class="tc">
+                {{ element.speed }}
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+
+          <mat-paginator
+            #paginatorCoreCommands
+            pageSize="5"
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+          ></mat-paginator>
+        </div>
+      </div>
+    </div>
+    <div class="coreChartDiv fl">
+      <div class="w100 fl coreChart">
+        <p class="chartTitle">Time vs Distance</p>
+      </div>
+      <div class="w100 fl mt15">
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [datasets]="lineChartData2"
+          [labels]="lineChartLabels2"
+          [legend]="true"
+          [colors]="lineChartColors"
+          [options]="lineChartOptions2"
+          [legend]="lineChartLegend2"
+          [chartType]="lineChartType2"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</div>

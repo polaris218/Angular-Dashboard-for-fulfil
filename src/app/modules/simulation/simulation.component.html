@@ -1,0 +1,165 @@
+<div class="p24 fl w100">
+  <div class="w100 fl plr15 mb20">
+    <div class="fl mt15 mb20">
+      <p
+        class="batchTitle f20Res"
+        *ngFor="let item of runsetList; let i = index"
+      >
+        <span>Runset {{ i + 1 }} : </span> <span>{{ item.value }}</span>
+      </p>
+    </div>
+    <div class="fr mt15 mb20">
+      <button mat-raised-button color="primary" (click)="openRunsetDialog()">
+        SELECT RUNSET
+      </button>
+    </div>
+  </div>
+  <div class="w100 fl">
+    <div class="attributesDiv">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Attributes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list class="statsList">
+            <mat-list-item>
+              <div class="fl w45 f14 pl5 br lh30 h28"></div>
+              <div class="w55 fl">
+                <div
+                  class="fl w33 f12 pl2 lh30 h28 f_bold"
+                  *ngFor="let item of attributes; let i = index"
+                >
+                  Runset {{ i + 1 }}
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-list-item *ngFor="let item of finalSubAttr">
+              <div class="fl w45 f14 pl5 br lh30 h28 tOver">{{ item.key }}</div>
+              <div
+                class="w55 fl"
+                *ngIf="
+                  item.key != 'CarouselTypeUsage' &&
+                  item.key != 'GroupParameters' &&
+                  item.key != 'OrdersPerHour' &&
+                  item.key != 'RefillsPerHour' &&
+                  item.key != 'StorageTypeUsage' &&
+                  item.key != 'ItemCountProb'
+                "
+              >
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold"
+                  *ngFor="let item1 of item.value"
+                >
+                  {{ item1 }}
+                </div>
+              </div>
+              <div class="w55 fl" *ngIf="item.key == 'CarouselTypeUsage'">
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold cursorP"
+                  *ngFor="let item of attributes; let i = index"
+                  (click)="showArray(i, 1)"
+                >
+                  Array
+                </div>
+              </div>
+              <div class="w55 fl" *ngIf="item.key == 'GroupParameters'">
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold cursorP"
+                  *ngFor="let item of attributes; let i = index"
+                  (click)="showArray(i, 2)"
+                >
+                  Array
+                </div>
+              </div>
+              <div class="w55 fl" *ngIf="item.key == 'OrdersPerHour'">
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold cursorP"
+                  *ngFor="let item of attributes; let i = index"
+                  (click)="showArray(i, 3)"
+                >
+                  Array
+                </div>
+              </div>
+              <div class="w55 fl" *ngIf="item.key == 'RefillsPerHour'">
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold cursorP"
+                  *ngFor="let item of attributes; let i = index"
+                  (click)="showArray(i, 4)"
+                >
+                  Array
+                </div>
+              </div>
+              <div class="w55 fl" *ngIf="item.key == 'StorageTypeUsage'">
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold cursorP"
+                  *ngFor="let item of attributes; let i = index"
+                  (click)="showArray(i, 5)"
+                >
+                  Array
+                </div>
+              </div>
+              <div class="w55 fl" *ngIf="item.key == 'ItemCountProb'">
+                <div
+                  class="fl w33 f14 pl5 lh30 h28 f_bold cursorP"
+                  *ngFor="let item of attributes; let i = index"
+                  (click)="showArray(i, 6)"
+                >
+                  Array
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="chartsDiv">
+      <div class="w100 fl">
+        <p class="chartTitle">Hour vs OrdersPerHour/AverageOrderTime</p>
+      </div>
+      <div class="w100 fl mt15 mb20">
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [datasets]="lineChartData1"
+          [labels]="lineChartLabels1"
+          [legend]="true"
+          [colors]="lineChartColors"
+          [plugins]="lineChartOptions1"
+          [options]="lineChartOptions1"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+      <div class="w100 fl">
+        <p class="chartTitle">Hour vs. NumberOrders/TrayRefills</p>
+      </div>
+      <div class="w100 fl mt15 mb20">
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [datasets]="lineChartData2"
+          [labels]="lineChartLabels2"
+          [legend]="true"
+          [colors]="lineChartColors"
+          [plugins]="lineChartOptions1"
+          [options]="lineChartOptions1"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

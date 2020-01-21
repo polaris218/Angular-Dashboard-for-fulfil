@@ -1,0 +1,121 @@
+mat-radio-button {
+  font-family: montserratregular;
+}
+.mat-raised-button.mat-primary {
+  background-color: #2bb673;
+  width: auto;
+  font-family: 'spectralregular';
+  border-radius: 5px;
+}
+.selectedButton {
+  background-color: #3f51b5 !important  ;
+}
+.label {
+  font-family: 'montserratregular';
+  text-align: center;
+}
+.remainText {
+  font-family: montserratregular;
+  font-weight: 500;
+}
+.imagesDiv {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+}
+.singleImg {
+  width: 16.6666%;
+}
+.singleImg img {
+  width: 100%;
+}
+.dialogTitle {
+  color: #2bb673 !important;
+  font-family: 'spectralregular';
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.cur_point {
+  cursor: pointer;
+}
+.dis_flex {
+  display: flex;
+}
+.diaMsg {
+  position: absolute;
+  bottom: -7px;
+  color: red;
+}
+.hTit {
+  font-family: 'spectralregular';
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.deList {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-bottom: 0;
+}
+.detail,
+.detail button {
+  font-family: 'montserratregular';
+}
+.info {
+  font-family: 'spectralregular';
+}
+mat-form-field {
+  width: 100%;
+  font-family: 'montserratregular';
+}
+.dialog label,
+::ng-deep .mat-radio-label-content {
+  font-family: 'montserratregular';
+}
+.dtPicker {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 7px;
+  font-size: 16px;
+  font-family: 'montserratregular';
+
+  margin-bottom: 20px;
+}
+.dtPicker:focus {
+  border: 1px solid;
+  outline: 0;
+}
+.imgTypeLable {
+  font-family: 'spectralregular';
+  margin-bottom: 7px;
+}
+.newLabelInput {
+  position: absolute;
+  bottom: 0;
+  width: 94%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+  background: #fff;
+}
+.actionButtons {
+  display: inline-flex;
+  float: right;
+}
+@media only screen and (max-width: 1199px) {
+  .singleImg {
+    width: 33.3333%;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .singleImg {
+    width: 50%;
+  }
+  .w100Re {
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+.select-areas-overlay {
+	background-color: transparent;
+	overflow: hidden; 
+	position: absolute;
+}
+.blurred {
+	filter: url("/filters.svg#blur3px");
+	-webkit-filter: blur(0px);
+	-moz-filter: blur(0px);
+	-o-filter: blur(0px);
+	filter: blur(0px);
+}
+
+.select-areas-outline {
+	background: #fff url('outline.gif');
+	overflow: hidden;
+}
+
+.select-areas-resize-handler {
+	background-color: #000;
+	border: 1px #fff solid;
+	height: 8px;
+	width: 8px;
+	overflow: hidden;
+}
+
+.select-areas-delete-area {
+	background: url('bt-delete.png');
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+}
+.delete-area {
+	position: absolute;
+	cursor: pointer;
+	padding: 5px;
+}

@@ -1,0 +1,90 @@
+<div class="dis_flex">
+  <h1 mat-dialog-title class="dialogTitle w95">Load Images</h1>
+  <mat-icon class="mt15 cur_point" (click)="onCloseMain()">clear</mat-icon>
+</div>
+<div mat-dialog-content class="w100 fl dialog">
+  <mat-form-field class="w100">
+    <mat-select [(ngModel)]="fillSelectedPId" placeholder="Select Product">
+      <mat-option *ngFor="let item of finalProducts" [value]="item.id">
+        {{ item.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <div class="w100 fl">
+    <input
+      [owlDateTime]="dt1"
+      [(ngModel)]="fillStartTime"
+      class="dtPicker"
+      [owlDateTimeTrigger]="dt1"
+      placeholder="Start Time"
+    />
+    <owl-date-time #dt1 showSecondsTimer="true"></owl-date-time>
+  </div>
+  <div class="w100 fl">
+    <input
+      [owlDateTime]="dt2"
+      [(ngModel)]="fillEndTime"
+      class="dtPicker"
+      [owlDateTimeTrigger]="dt2"
+      placeholder="End Time"
+    />
+    <owl-date-time #dt2 showSecondsTimer="true"></owl-date-time>
+  </div>
+  <div class="w100 fl mb10">
+    <mat-radio-group aria-labelledby="" [(ngModel)]="gradingType">
+      <mat-radio-button
+        class="mr10"
+        *ngFor="let grading of gradings"
+        [value]="grading"
+      >
+        {{ grading }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="w100 fl">
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="fillOperator"
+        type="text"
+        placeholder="Operator"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="w100 fl">
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="guideVersion"
+        (blur)="onGuideVersionBlur()"
+        type="text"
+        placeholder="Guide Version"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="w100 fl">
+    <mat-checkbox [(ngModel)]="randomize">Randomize</mat-checkbox>
+  </div>
+</div>
+
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>
+<div mat-dialog-actions class="actionButtons">
+  <div class="mr20 mb20">
+    <button mat-raised-button color="primary" (click)="onLoadImage()">
+      Load
+    </button>
+  </div>
+  <div class="mr20 mb20">
+    <button mat-raised-button color="primary" (click)="resetFilter()">
+      Reset
+    </button>
+  </div>
+</div>

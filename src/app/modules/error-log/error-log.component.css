@@ -1,0 +1,86 @@
+table {
+  width: 100%;
+  min-width: 700px;
+  font-family: 'montserratregular';
+}
+.searchBar {
+  float: right;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+.searchBox > ::ng-deep .mat-form-field-wrapper > .mat-form-field-flex {
+  width: 200px !important;
+  font-family: 'montserratregular';
+}
+td,
+th {
+  border-right: 1px solid #e0e0e0;
+  padding: 0p 5px !important;
+}
+.filterDd {
+  float: left;
+  margin-top: 4px;
+}
+.mat-header-cell {
+  color: #000;
+}
+td:nth-child(1),
+th:nth-child(1) {
+  width: 15%;
+}
+td:nth-child(2),
+th:nth-child(2) {
+  width: 15%;
+}
+td:nth-child(3),
+th:nth-child(3) {
+  width: 70%;
+}
+.mat-tab-group {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 0 15px;
+}
+.mat-elevation-z8 {
+  width: 100%;
+  overflow-x: auto;
+}
+mat-option {
+  font-family: 'montserratregular';
+}
+mat-select {
+  font-family: 'montserratregular';
+}
+::ng-deep .mat-tab-label {
+  font-family: 'spectralregular';
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  td.mat-cell:first-of-type,
+  th.mat-header-cell:first-of-type {
+    padding-left: 10px;
+  }
+  td.mat-cell:last-of-type,
+  th.mat-header-cell:last-of-type {
+    padding-right: 10px;
+  }
+  .mat-elevation-z8 {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table,
+  .mat-paginator {
+    width: 710px;
+  }
+  .filterDd {
+    width: 100%;
+  }
+  .searchBar {
+    width: 100%;
+    margin-right: 0;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+}

@@ -1,0 +1,61 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <div class="titleDivFull" *ngIf="sidenavOpen == 1">
+      <h1 class="example-app-name">
+        <img src="assets/images/logo_white.png" class="mt17 w100p" />
+      </h1>
+    </div>
+    <div class="titleDivShort" *ngIf="sidenavOpen == 0">
+      <h1 class="example-app-name">
+        <img src="assets/images/logo_white_collapsed.png" class="mt17 h36" />
+      </h1>
+    </div>
+    <div class="menuBtn" [ngClass]="{ pl16: sidenavOpen == 0 }">
+      <button
+        mat-icon-button
+        (click)="toggleNav()"
+        class="menuBtnShort"
+        [ngClass]="{ menuBtnFull: sidenavOpen == 1 }"
+      >
+        <mat-icon class="lArrow" *ngIf="sidenavOpen == 1">arrow_left</mat-icon>
+        <mat-icon class="menuIcon">menu</mat-icon>
+        <mat-icon class="lArrow" *ngIf="sidenavOpen == 0">arrow_right</mat-icon>
+      </button>
+    </div>
+    <p class="titleP">{{ titleNav }}</p>
+  </mat-toolbar>
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [ngClass]="{ sidenavContaier: sidenavOpen == 0 }"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    (click)="menuCloseMob()"
+  >
+    <mat-sidenav
+      #snav
+      [opened]="mobileQuery.matches ? 'false' : 'true'"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      [ngClass]="{ sidenavHided: sidenavOpen == 0 }"
+    >
+      <mat-nav-list *ngIf="!navLoading">
+        <a
+          mat-list-item
+          [ngClass]="{ sideItemsShort: sidenavOpen == 0 }"
+          [class.ActiveItem]="isActive(nav.component)"
+          class="sideItems"
+          routerLink="{{ nav.component }}"
+          *ngFor="let nav of fillerNav"
+        >
+          <mat-icon>{{ nav.icon }} </mat-icon> <span>{{ nav.title }}</span>
+        </a>
+        <a mat-list-item class="sideItems" (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon> <span>Logout</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

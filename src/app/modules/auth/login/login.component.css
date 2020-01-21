@@ -1,0 +1,91 @@
+::ng-deep .example-is-mobile {
+  background-color: #eef5f6;
+}
+.logoDiv {
+  margin-left: -24px;
+  width: 320px !important;
+  margin-top: -24px;
+  margin-bottom: 20px;
+  background-color: #2bb673;
+  padding: 15px 0;
+}
+.logoDiv img {
+  margin: 0 auto;
+  display: block;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 24px;
+  width: 320px;
+  margin: auto;
+  height: 300px;
+  margin-top: 6rem;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.example-container > * {
+  width: 100%;
+}
+.mat-raised-button.mat-primary {
+  background-color: #2bb673;
+  width: 150px;
+  border-radius: 5px;
+}
+mat-form-field {
+  width: 100%;
+  padding-bottom: 10px;
+}
+textarea {
+  resize: none !important;
+  height: 100%;
+}
+.textAreaSet {
+  height: 120px;
+}
+.textAreaSet > ::ng-deep .mat-form-field-wrapper {
+  height: 120px;
+}
+.textAreaSet > ::ng-deep .mat-form-field-wrapper > .mat-form-field-flex {
+  height: 100px;
+}
+.textAreaSet
+  > ::ng-deep
+  .mat-form-field-wrapper
+  > .mat-form-field-flex
+  > .mat-form-field-infix {
+  height: 100px;
+}
+.addMetaBtn {
+  position: absolute;
+  left: 190px;
+  bottom: 24px;
+}
+@media only screen and (max-width: 600px) {
+  .example-container {
+    left: 0;
+    top: -70px;
+  }
+}
+.spinner {
+  position: absolute;
+  top: 25%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.spinner.active {
+  opacity: 1;
+}
+.button-text {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.button-text.active {
+  opacity: 0;
+}
+::ng-deep .mat-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

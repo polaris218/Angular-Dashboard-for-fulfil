@@ -1,0 +1,263 @@
+.status {
+  background-color: #e6f7e3;
+  color: #2bb673;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding: 4px 7px;
+}
+.link {
+  font-size: 1.3em;
+  padding-left: 15px;
+  font-weight: bold;
+}
+.lastCheck {
+  margin-top: 10px;
+  color: #aaa;
+}
+.percent {
+  color: #2bb673;
+  text-align: center;
+  font-size: 4em;
+  font-weight: 200;
+  margin-top: 30px;
+}
+.rolling {
+  color: #aaa;
+  text-align: center;
+}
+.lastLabel {
+    font-size: 12px;
+    padding: 7px;
+    background: #ccc;
+    width: fit-content;
+    margin: 30px auto 0;
+    display: block;
+}
+.leftBorder {
+    border: 0.5px solid #ccc;
+    height: 1px;
+    float: left;
+    width: 44%;
+    margin-top: 42px;
+}
+.rightBorder {
+    border: 0.5px solid #ccc;
+    height: 1px;
+    float: right;
+    width: 44%;
+    margin-top: -12px;
+}
+.apdexChartLeft {
+    width: 15%;
+    float: left;
+    padding-right: 10px;
+}
+.apdexChartRight {
+    width: 85%;
+    float: left;
+    margin-top: 50px;
+}
+.apdexChartLeft p:first-child {
+    text-align: right;
+    font-size: 35px;
+    margin-top: 50px;
+    width: 100%;
+}
+.apdexChartLeft p:nth-child(2) {
+    text-align: right;
+    font-size: 12px;
+    width: 100%;
+}
+.responseChartLeft {
+    width: 15%;
+    float: left;
+    padding-right: 10px;
+}
+.responseChartRight {
+    width: 85%;
+    float: left;
+}
+.responseChartLeft p:first-child {
+    text-align: right;
+    font-size: 35px;
+    margin-top: 50px;
+    width: 100%;
+}
+.responseChartLeft p:nth-child(2) {
+    width: 100%;
+    float: right;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2bb673;
+}
+.responseChartLeft p:nth-child(2) span {
+    background: rgba(43,182,115,0.2);
+    padding: 2px 5px;
+}
+.responseChartLeft p:nth-child(3) {
+    text-align: right;
+    font-size: 12px;
+    width: 100%;
+}
+.calendar {
+    margin-top: 20px;
+}
+.months {
+    width: 16.6666%;
+    float: left;
+}
+.monthTitle {
+    text-align: center;
+    font-size: 0.9em;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+.days {
+    width: 100%;
+    float: left;
+    padding: 5px;
+}
+.singleDay {
+    width: 14.285%;
+    float: left;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.normalSvg {
+    color: #aaa;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    height: 15px;
+}
+.greenSvg {
+    color: #2bb673;
+    fill: #2bb673;
+    stroke: #2bb673;
+    stroke-width: 1;
+    height: 15px;
+}
+.orangeSvg {
+    color: orange;
+    fill: orange;
+    stroke: orange;
+    stroke-width: 1;
+    height: 15px;
+}
+.redSvg {
+    color: red;
+    fill: red;
+    stroke: red;
+    stroke-width: 1;
+    height: 15px;
+}
+.timeLines {
+    float: right;
+}
+.normalTime {
+    float: left;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.greenTime {
+    float: left;
+    margin-right: 10px;
+    color: #2bb673;
+    font-size: 14px;
+}
+.orangeTime {
+    float: left;
+    margin-right: 10px;
+    color: orange;
+    font-size: 14px;
+}
+.redTime {
+    float: left;
+    margin-right: 10px;
+    color: red;
+    font-size: 14px;
+}
+.history {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 100%;
+}
+.apdex-timeline {
+    height: 6em;
+    clear: both;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flexbox;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-bottom: 1.5em;
+}
+.apdex-timeline output {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: rgba(0,0,0,0.05);
+    position: relative;
+    margin: 0 1px;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flexbox;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end;
+}
+.apdex-timeline i {
+    transition: border-color 0.3s, background-color 0.3s;
+    display: block;
+    background-color: rgba(141,213,181,0.5);
+    border-top: 2px solid #2bb673;
+    box-sizing: border-box;
+}
+.apdex-timeline span {
+    display: block;
+    font-style: normal;
+    color: #2bb673;
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 1.6em;
+    position: relative;
+}
+.apdex-timeline .ends-at {
+    width: 190%;
+    color: #aaa;
+    position: absolute;
+    top: 100%;
+    font-size: 0.8em;
+    text-align: right;
+    right: -2px;
+    padding: 0.2em 0.3em 0 0;
+    border-right: 2px solid rgba(0,0,0,0.1);
+}

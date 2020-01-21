@@ -1,0 +1,130 @@
+<div class="p24 fl w100">
+  <div class="w100 fl">
+    <div class="fl mr20">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="btnAllDisable == 1"
+        (click)="loadImageDialog()"
+      >
+        Load Images
+      </button>
+    </div>
+    <div class="fl mr20 ml20 label">
+      <div>
+        Operator
+      </div>
+      <div class="mt10">
+        {{ operator }}
+      </div>
+    </div>
+    <div class="fl w100Re">
+      <div class="fl mr20 w120p">
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [(ngModel)]="passRadio"
+          (change)="changePRadio()"
+        >
+          <mat-radio-button
+            class="example-radio-button w100 mb10"
+            value="passFail"
+          >
+            Pass/Fail
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button w100" value="abc">
+            A,B,C
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="fl mt10 mr20" *ngIf="btnsPass == 1">
+        <button
+          mat-raised-button
+          color="primary"
+          class="mr10"
+          [disabled]="btnAllDisable == 1"
+          [class.selectedButton]="gradingType === 'Graded' && grade === 'PASS'"
+          (click)="setGrade('PASS')"
+        >
+          Pass
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="btnAllDisable == 1"
+          class="mr10"
+          [class.selectedButton]="gradingType === 'Graded' && grade === 'FAIL'"
+          (click)="setGrade('FAIL')"
+        >
+          Fail
+        </button>
+      </div>
+      <div class="fl mt10 mr20" *ngIf="btnsPass == 0">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="btnAllDisable == 1"
+          class="mr10"
+          [class.selectedButton]="gradingType === 'Graded' && grade === 'A'"
+          (click)="setGrade('A')"
+        >
+          A
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="btnAllDisable == 1"
+          class="mr10"
+          [class.selectedButton]="gradingType === 'Graded' && grade === 'B'"
+          (click)="setGrade('B')"
+        >
+          B
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="btnAllDisable == 1"
+          [class.selectedButton]="gradingType === 'Graded' && grade === 'C'"
+          (click)="setGrade('C')"
+        >
+          C
+        </button>
+      </div>
+      <div class="fl mt15">
+        <mat-checkbox [(ngModel)]="uncertain">Uncertain</mat-checkbox>
+      </div>
+    </div>
+
+    <div class="fr w100Re">
+      <div class="w100 fl mb10">
+        <p class="fr remainText">Items Remaining : {{ remainImages }}</p>
+      </div>
+      <div class="w100 fl">
+        <mat-radio-group
+          class="fr"
+          aria-label="Select an option"
+          [(ngModel)]="iTypeRadio"
+        >
+          <mat-radio-button value="rgb" class="mr10">RGB</mat-radio-button>
+          <mat-radio-button value="ir">INFRARED</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+  <div class="w100 fl imagesDiv mt20">
+    <div class="fl singleImg" *ngFor="let item of finalGroungImages">
+      <img
+        [src]="item.image"
+        (click)="openImageViewer(item.image)"
+        *ngIf="item.image_type == iTypeRadio"
+      />
+    </div>
+  </div>
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  >
+  </mat-progress-spinner>
+</div>

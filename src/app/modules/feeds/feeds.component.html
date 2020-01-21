@@ -1,0 +1,120 @@
+<div class="p24 fl w100">
+  <div class="example-container">
+    <form [formGroup]="uploadForm" (submit)="onSubmit($event)">
+      <mat-grid-list cols="1" rowHeight="70px" gutterSize="16px">
+        <mat-grid-tile>
+          <mat-form-field [hideRequiredMarker]="false">
+            <mat-select
+              placeholder="Environment"
+              formControlName="env"
+              required
+            >
+              <mat-option value="dev">Development</mat-option>
+              <mat-option value="prod">Production</mat-option>
+              <mat-option value="local" [disabled]="isProd">Local</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="submitted && f.env.errors && f.env.errors.required"
+              >Environment is required !</mat-error
+            >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field [hideRequiredMarker]="false">
+            <mat-select
+              placeholder="Target Table"
+              formControlName="table"
+              required
+            >
+              <mat-option value="product">Product</mat-option>
+              <mat-option value="inventory">Inventory</mat-option>
+              <mat-option value="metadata">Metadata</mat-option>
+              <mat-option value="supplierdelivery">Supplier Delivery</mat-option>
+              <mat-option value="variants">Variants</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="submitted && f.table.errors && f.table.errors.required"
+              >Target Table is required !
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field [hideRequiredMarker]="false">
+            <mat-select
+              placeholder="Operation Type"
+              formControlName="type"
+              required
+            >
+              <mat-option value="append">Append</mat-option>
+              <mat-option value="replace">Replace</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="submitted && f.type.errors && f.type.errors.required"
+              >Operation type is required !
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field [hideRequiredMarker]="false">
+            <input
+              matInput
+              placeholder="API Key"
+              formControlName="key"
+              required
+            />
+            <mat-error
+              *ngIf="submitted && f.key.errors && f.key.errors.required"
+              >API key is required !</mat-error
+            >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <input
+            type="file"
+            accept="text/csv"
+            #fileInput
+            style="display: none"
+            (change)="onFileChange($event)"
+          />
+          <button
+            class="upload-btn"
+            (click)="onUpload()"
+            type="button"
+            mat-raised-button
+          >
+            Upload File <span style="color : red">*</span>
+          </button>
+          {{ f.file.value && f.file.value.name }}
+          <mat-error
+            *ngIf="submitted && f.file.errors && f.file.errors.required"
+            >File is required !</mat-error
+          >
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button type="button" mat-raised-button (click)="onCancel()">
+            Cancel
+          </button>
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="downloadOpen()"
+          >
+            Download Feeds
+          </button>
+          <button type="submit" mat-raised-button color="primary">
+            Submit
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </div>
+</div>
+
+<mat-progress-spinner
+  *ngIf="isLoading"
+  color="primary"
+  mode="indeterminate"
+  diameter="50"
+>
+</mat-progress-spinner>
