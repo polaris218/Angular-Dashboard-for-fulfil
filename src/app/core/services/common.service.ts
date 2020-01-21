@@ -13,7 +13,7 @@ export class CommonService {
   apiKey = '';
   permission = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Get Orders
@@ -248,8 +248,7 @@ export class CommonService {
    */
   createCart() {
     const configUrl =
-      `${this.fulfilBaseUrl}cart/create?userKey=cf7749baf66cbef6b1ad5b418987681c99b8` +
-      '2488cf9fc5b3cd35d03a995887e49de15450ccb7d7f6acfeb72ad209984e73e48b9044d9c8833777897b51f2e84a3c9779c5d7487095a833eccf31a2198f';
+      `${this.fulfilBaseUrl}cart/create?userKey=`;
     return this.http.get(configUrl, { headers: { key: this.apiKey } });
   }
 
@@ -384,8 +383,8 @@ export class CommonService {
       env === 'prod'
         ? this.fulfilBaseProdUrl
         : env === 'dev'
-        ? this.fulfilBaseDevUrl
-        : this.fulfilBaseLocalUrl;
+          ? this.fulfilBaseDevUrl
+          : this.fulfilBaseLocalUrl;
     const configUrl = `${url}inventory/uploadInventory?table=${table}&type=${type}`;
     return this.http.post(configUrl, form, {
       headers: { key: key || this.apiKey }
@@ -402,8 +401,8 @@ export class CommonService {
       env === 'prod'
         ? this.fulfilBaseProdUrl
         : env === 'dev'
-        ? this.fulfilBaseDevUrl
-        : this.fulfilBaseLocalUrl;
+          ? this.fulfilBaseDevUrl
+          : this.fulfilBaseLocalUrl;
     const configUrl = `${url}inventory/inventoryDownload?table=${table}`;
     return this.http.get(configUrl, {
       headers: { key: key || this.apiKey },
